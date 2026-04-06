@@ -1,3 +1,4 @@
+/* ─── Variáveis e Reset ─── */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
@@ -5,14 +6,9 @@
   --bg-elevated: #0c0c12;
   --fg: #f4f4f6;
   --fg-muted: #8b8b9e;
-  
-  /* Azul React Principal */
-  --accent: #61dafb; 
-  
-  /* Variações de Transparência para Glow e Borders */
+  --accent: #61dafb;
   --accent-dim: rgba(97, 218, 251, 0.15);
   --accent-glow: rgba(97, 218, 251, 0.4);
-  
   --secondary: #ff6b4a;
   --card: rgba(18, 18, 28, 0.7);
   --border: rgba(255, 255, 255, 0.06);
@@ -20,7 +16,6 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -32,7 +27,7 @@ body {
   line-height: 1.6;
 }
 
-/* Aurora Background */
+/* ─── Aurora Background ─── */
 .aurora-bg {
   position: fixed;
   inset: 0;
@@ -79,7 +74,7 @@ body {
 
 .grid-pattern {
   position: fixed; inset: 0; z-index: 1;
-  background-image: 
+  background-image:
     linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
   background-size: 60px 60px;
@@ -91,6 +86,7 @@ body {
   position: fixed; inset: 0; z-index: 2; pointer-events: none;
 }
 
+/* ─── App Container ─── */
 .app {
   position: relative; z-index: 10;
   max-width: 1100px;
@@ -98,8 +94,12 @@ body {
   padding: 0 1.5rem 6rem;
 }
 
-/* Hero */
-.hero { padding: 6rem 0 4rem; text-align: center; position: relative; }
+/* ─── Hero ─── */
+.hero {
+  padding: 6rem 0 4rem;
+  text-align: center;
+  position: relative;
+}
 
 .react-atom-container {
   width: 140px; height: 140px;
@@ -113,14 +113,22 @@ body {
   animation: atomSpin 25s linear infinite;
 }
 
-.react-atom ellipse { stroke: var(--accent); stroke-width: 1.5; fill: none; opacity: 0.8; }
+.react-atom ellipse {
+  stroke: var(--accent); stroke-width: 1.5; fill: none; opacity: 0.8;
+}
 .react-atom ellipse:nth-child(1) { animation: orbitPulse 3s ease-in-out infinite; }
 .react-atom ellipse:nth-child(2) { animation: orbitPulse 3s ease-in-out infinite 0.5s; }
 .react-atom ellipse:nth-child(3) { animation: orbitPulse 3s ease-in-out infinite 1s; }
-.react-atom circle { fill: var(--accent); filter: drop-shadow(0 0 20px var(--accent-glow)); }
+.react-atom circle {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 20px var(--accent-glow));
+}
 
 @keyframes atomSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes orbitPulse { 0%, 100% { opacity: 0.6; stroke-width: 1.5; } 50% { opacity: 1; stroke-width: 2; } }
+@keyframes orbitPulse {
+  0%, 100% { opacity: 0.6; stroke-width: 1.5; }
+  50% { opacity: 1; stroke-width: 2; }
+}
 
 .hero-badge {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -134,11 +142,20 @@ body {
   opacity: 0;
 }
 
-.badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
-@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+.badge-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
 
 .hero h1 {
-  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-size: clamp(2rem, 7vw, 5.5rem);
   font-weight: 700; letter-spacing: -0.03em; line-height: 1.1;
   margin-bottom: 1.25rem;
   animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
@@ -146,66 +163,67 @@ body {
 }
 
 .hero-sub {
-  font-size: 1.15rem; color: var(--fg-muted);
+  font-size: 1.05rem; color: var(--fg-muted);
   max-width: 520px; margin: 0 auto 2.5rem;
+  padding: 0 0.5rem;
   animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
   opacity: 0;
 }
 
 .hero-stats {
-  display: flex; justify-content: center; gap: 3rem;
+  display: flex; justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
   animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
   opacity: 0;
 }
 
 .stat { text-align: center; }
-.stat-value { font-size: 2rem; font-weight: 700; color: var(--fg); font-variant-numeric: tabular-nums; }
+.stat-value {
+  font-size: 2rem; font-weight: 700; color: var(--fg);
+  font-variant-numeric: tabular-nums;
+}
 .stat-label { font-size: 0.85rem; color: var(--fg-muted); margin-top: 0.25rem; }
 
-@keyframes fadeSlideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-/* Tabs Responsivas e Centralizadas */
+/* ─── Tabs ─── */
 .tabs-container {
   position: sticky;
-  top: 1rem;
+  top: 0.5rem;
   z-index: 100;
   margin-bottom: 2rem;
   width: 100%;
-  display: flex;        /* Adicionado para centralização externa */
-  justify-content: center; 
+  display: flex;
+  justify-content: center;
 }
 
 .tabs {
   display: flex;
-  justify-content: center; /* Centraliza os botões internamente */
   gap: 6px;
   padding: 6px;
   background: var(--card);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border);
   border-radius: 16px;
-  
-  /* Ajustes de largura e scroll */
-  max-width: 95%; 
-  overflow-x: auto; 
+  max-width: 95%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  /* Snap suave para tabs no mobile */
+  scroll-snap-type: x proximity;
 }
 
-/* O segredo para o scroll funcionar com centralização: */
-.tabs::after, .tabs::before {
-  content: '';
-  flex: 1; /* Cria um espaço flexível que ajuda a manter o centro */
-  display: none; /* Ativado apenas se necessário por JS ou media query */
-}
-
-/* Remove a scrollbar */
-.tabs::-webkit-scrollbar {
-  display: none;
-}
+.tabs::-webkit-scrollbar { display: none; }
 
 .tab {
   padding: 0.75rem 1.5rem;
+  min-height: 44px; /* Área de toque mínima iOS/Android */
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
@@ -213,18 +231,13 @@ body {
   border-radius: 12px;
   background: transparent;
   color: var(--fg-muted);
-  white-space: nowrap; /* Não quebra linha */
-  flex-shrink: 0;    /* Não esmaga o botão */
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all 0.3s ease;
-}
-
-/* Ajuste específico para Mobile */
-@media (max-width: 768px) {
-  .tabs {
-    /* No mobile, se o conteúdo exceder a tela, o 'center' pode cortar o início. 
-       O 'safe center' ou 'flex-start' garante que o usuário consiga scrollar. */
-    justify-content: safe center; 
-  }
+  scroll-snap-align: start;
+  /* Remove tap highlight no mobile */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .tab.active {
@@ -233,18 +246,28 @@ body {
   box-shadow: 0 4px 15px var(--accent-glow);
 }
 
-/* Sections */
-.section-content { animation: contentFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-@keyframes contentFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+/* ─── Sections ─── */
+.section-content {
+  animation: contentFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes contentFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 .section-header { margin-bottom: 2.5rem; }
-.section-header h2 { font-size: 2rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+.section-header h2 {
+  font-size: 2rem; font-weight: 600;
+  letter-spacing: -0.02em; margin-bottom: 0.5rem;
+}
 .section-header p { color: var(--fg-muted); font-size: 1rem; }
 
-/* Timeline */
+/* ─── Timeline ─── */
 .timeline { position: relative; padding-left: 2rem; }
 .timeline::before {
-  content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px;
+  content: ''; position: absolute;
+  left: 7px; top: 0; bottom: 0; width: 2px;
   background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
 }
 
@@ -270,12 +293,21 @@ body {
   transform: scale(1.2);
 }
 
-.timeline-year { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 600; color: var(--accent); margin-bottom: 0.35rem; letter-spacing: 0.05em; }
+.timeline-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem; font-weight: 600;
+  color: var(--accent); margin-bottom: 0.35rem;
+  letter-spacing: 0.05em;
+}
 .timeline-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; }
 .timeline-desc { color: var(--fg-muted); font-size: 0.95rem; line-height: 1.6; }
 
-/* Concepts */
-.concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+/* ─── Concepts ─── */
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem; margin-bottom: 2rem;
+}
 
 .concept-card {
   position: relative; background: var(--card);
@@ -283,6 +315,8 @@ body {
   padding: 1.5rem; cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .concept-card::before {
@@ -310,12 +344,15 @@ body {
 .concept-title { position: relative; z-index: 1; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
 .concept-desc { position: relative; z-index: 1; color: var(--fg-muted); font-size: 0.9rem; }
 
-/* Code Block */
+/* ─── Code Block ─── */
 .code-block {
   position: relative;
   background: linear-gradient(145deg, #0a0a10 0%, #0f0f18 100%);
   border: 1px solid var(--border); border-radius: 16px;
-  padding: 1.5rem; overflow: hidden;
+  padding: 1.5rem;
+  overflow: hidden;
+  /* Permite scroll horizontal no mobile */
+  max-width: 100%;
 }
 
 .code-block::before {
@@ -330,14 +367,23 @@ body {
 .code-dot:nth-child(2) { background: #febc2e; }
 .code-dot:nth-child(3) { background: #28c840; }
 
-.code-content { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.8; color: #a8b2c3; margin-top: 2rem; white-space: pre-wrap; }
+.code-content {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem; line-height: 1.8;
+  color: #a8b2c3; margin-top: 2rem;
+  white-space: pre;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  display: block;
+}
+
 .code-content .keyword { color: #c678dd; }
 .code-content .function { color: #61afef; }
 .code-content .string { color: #98c379; }
 .code-content .variable { color: #e5c07b; }
 .code-content .comment { color: #5c6370; font-style: italic; }
 
-/* Demo */
+/* ─── Demo / Counter ─── */
 .counter-card {
   position: relative;
   background: var(--card);
@@ -354,7 +400,12 @@ body {
   opacity: 0.5;
 }
 
-.counter-label { position: relative; z-index: 1; font-size: 0.9rem; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+.counter-label {
+  position: relative; z-index: 1;
+  font-size: 0.9rem; color: var(--fg-muted);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
 
 .counter-value {
   position: relative; z-index: 1;
@@ -368,13 +419,22 @@ body {
 }
 .counter-value.bump { transform: scale(1.05); }
 
-.counter-btns { position: relative; z-index: 1; display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; }
+.counter-btns {
+  position: relative; z-index: 1;
+  display: flex; justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem; margin-top: 2rem;
+}
 
+/* ─── Buttons ─── */
 .btn {
   padding: 1rem 2rem; font-size: 0.95rem; font-weight: 600;
   font-family: inherit; border-radius: 12px; cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative; overflow: hidden;
+  min-height: 44px; /* Área de toque */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .btn::after {
@@ -385,35 +445,178 @@ body {
 .btn:hover::after { opacity: 1; }
 .btn:active { transform: scale(0.97); }
 
-.btn-secondary { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--fg); }
+.btn-secondary {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border); color: var(--fg);
+}
 .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.15); }
 
-.btn-primary { background: var(--accent); border: none; color: var(--bg); box-shadow: 0 4px 20px var(--accent-glow); }
+.btn-primary {
+  background: var(--accent); border: none; color: var(--bg);
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
 .btn-primary:hover { background: #00e8b8; box-shadow: 0 8px 30px var(--accent-glow); }
 
-/* Ecosystem */
-.ecosystem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.ecosystem-group { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; }
-.ecosystem-group-title { font-size: 0.8rem; font-weight: 600; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
-.ecosystem-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 12px; margin-bottom: 0.5rem; transition: all 0.3s; }
+/* ─── Ecosystem ─── */
+.ecosystem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.ecosystem-group {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 1.5rem;
+}
+.ecosystem-group-title {
+  font-size: 0.8rem; font-weight: 600;
+  color: var(--fg-muted); text-transform: uppercase;
+  letter-spacing: 0.1em; margin-bottom: 1rem;
+}
+.ecosystem-item {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem; background: rgba(255,255,255,0.02);
+  border-radius: 12px; margin-bottom: 0.5rem;
+  transition: all 0.3s;
+}
 .ecosystem-item:last-child { margin-bottom: 0; }
 .ecosystem-item:hover { background: rgba(255,255,255,0.05); transform: translateX(4px); }
-.ecosystem-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--accent-dim); border-radius: 10px; font-size: 1.1rem; font-weight: 700; color: var(--accent); }
+.ecosystem-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent-dim); border-radius: 10px;
+  font-size: 1.1rem; font-weight: 700; color: var(--accent);
+}
 .ecosystem-info h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.15rem; }
 .ecosystem-info p { font-size: 0.8rem; color: var(--fg-muted); }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .hero { padding: 4rem 0 3rem; }
-  .hero-stats { gap: 2rem; }
+/* ════════════════════════════════
+   BREAKPOINTS MOBILE
+════════════════════════════════ */
+
+/* ── Telas pequenas (≤ 480px) ── */
+@media (max-width: 480px) {
+  .app {
+    padding: 0 1rem 4rem;
+  }
+
+  .hero {
+    padding: 2.5rem 0 2rem;
+  }
+
+  .react-atom-container {
+    width: 100px; height: 100px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.75rem, 9vw, 3rem);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-sub {
+    font-size: 0.95rem;
+    padding: 0 0.25rem;
+  }
+
+  .hero-stats {
+    gap: 1.25rem 2rem;
+  }
+
   .stat-value { font-size: 1.5rem; }
-  .tabs { gap: 4px; padding: 4px; }
-  .tab { padding: 0.7rem 1rem; font-size: 0.85rem; }
-  .timeline { padding-left: 1.5rem; }
-  .timeline-item { padding-left: 1.5rem; }
-  .timeline-dot { left: -1.5rem; width: 12px; height: 12px; }
+  .stat-label { font-size: 0.8rem; }
+
+  .tabs-container { top: 0; }
+
+  .tab {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.78rem;
+  }
+
+  .section-header h2 { font-size: 1.4rem; }
+
+  .timeline { padding-left: 1.25rem; }
+  .timeline-item { padding-left: 1.25rem; padding-bottom: 2rem; }
+  .timeline-dot { left: -1.25rem; width: 12px; height: 12px; border-width: 2px; }
+  .timeline-title { font-size: 1rem; }
+
+  .concept-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .concept-card { padding: 1.25rem; }
+
+  .code-content { font-size: 0.78rem; }
+
+  .counter-card { padding: 2rem 1.25rem; }
+
+  .btn {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.9rem;
+    width: 100%; /* Botões full-width em telas muito pequenas */
+  }
+
+  .counter-btns { flex-direction: column; align-items: center; }
+  .counter-btns .btn { width: auto; min-width: 140px; }
+
+  .ecosystem-grid { grid-template-columns: 1fr; }
 }
 
+/* ── Tablets pequenos (481px – 768px) ── */
+@media (min-width: 481px) and (max-width: 768px) {
+  .app {
+    padding: 0 1.25rem 5rem;
+  }
+
+  .hero {
+    padding: 3.5rem 0 2.5rem;
+  }
+
+  .react-atom-container {
+    width: 110px; height: 110px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 8vw, 4rem);
+  }
+
+  .hero-stats {
+    gap: 1.25rem 2.5rem;
+  }
+
+  .stat-value { font-size: 1.75rem; }
+
+  .tab {
+    padding: 0.7rem 1.1rem;
+    font-size: 0.85rem;
+  }
+
+  .section-header h2 { font-size: 1.6rem; }
+
+  .concept-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ecosystem-grid { grid-template-columns: 1fr; }
+
+  .counter-card { padding: 2.5rem 1.5rem; }
+
+  .timeline { padding-left: 1.5rem; }
+  .timeline-item { padding-left: 1.5rem; }
+  .timeline-dot { left: -1.5rem; width: 13px; height: 13px; }
+}
+
+/* ── Hover apenas em dispositivos com ponteiro ── */
+@media (hover: none) {
+  .concept-card:hover { transform: none; }
+  .ecosystem-item:hover { transform: none; }
+  .btn:hover::after { opacity: 0; }
+
+  /* Feedback de toque visual */
+  .concept-card:active { transform: scale(0.98); border-color: var(--border-accent); }
+  .ecosystem-item:active { background: rgba(255,255,255,0.05); }
+}
+
+/* ── Movimento reduzido ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
